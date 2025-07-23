@@ -15,7 +15,7 @@ QWidget {
     color: #777777;
 }
 
-#ProjectsButton {
+#ProjectsButton, #ConverterButton { /* 同时定义项目按钮和转换器按钮的样式 */
     text-align: left;
     padding: 10px;
     margin: 10px 0;
@@ -23,7 +23,7 @@ QWidget {
     border: none;
 }
 
-#ProjectsButton:hover {
+#ProjectsButton:hover, #ConverterButton:hover { /* 同时定义悬停效果 */
     background-color: #e6f7ff;
 }
 
@@ -32,7 +32,7 @@ QWidget {
     background-color: #ffffff;
 }
 
-/* 搜索框 */
+/* 搜索功能 */
 #SearchEdit {
     border: 1px solid #cccccc;
     border-radius: 4px;

@@ -2,7 +2,6 @@ import os
 
 from PyQt5.Qt import *
 
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -42,6 +41,7 @@ class MainWindow(QMainWindow):
         # 构建资源文件的绝对路径
         logo_path = os.path.join(current_dir, '..', 'resources', 'logo.ico')
         projects_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'suitcase-solid-full.svg')
+        converter_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'gears-solid-full.svg') # 新增图标路径
 
         # Logo + 程序名 + 版本号
         logo_label = QLabel()
@@ -64,10 +64,18 @@ class MainWindow(QMainWindow):
         projects_button.setText("项目")
         projects_button.setObjectName("ProjectsButton")
 
+        # 转换器按钮（新增）
+        converter_button = QPushButton()
+        converter_button.setIcon(QIcon(converter_button_icon_path))
+        converter_button.setIconSize(QSize(24, 24))
+        converter_button.setText("转换器")
+        converter_button.setObjectName("ConverterButton") # 新增标识符
+
         left_menu_layout.addWidget(logo_label)
         left_menu_layout.addWidget(program_name)
         left_menu_layout.addWidget(version_label)
         left_menu_layout.addWidget(projects_button)
+        left_menu_layout.addWidget(converter_button) # 新增按钮
         left_menu_layout.addStretch()
 
         main_layout.addWidget(left_menu, 1)
@@ -77,11 +85,11 @@ class MainWindow(QMainWindow):
         right_content.setObjectName("RightContent")
         right_content_layout = QVBoxLayout(right_content)
 
-        # 搜索功能和操作栏
+        # 搜索框功能和操作栏
         control_bar = QWidget()
         control_bar_layout = QHBoxLayout(control_bar)
 
-        # 搜索功能部分
+        # 搜索
         search_bar = QWidget()
         search_layout = QHBoxLayout(search_bar)
 
@@ -105,7 +113,7 @@ class MainWindow(QMainWindow):
         new_project_button = QPushButton("新建项目")
         new_project_button.setObjectName("NewProjectButton")
 
-        open_project_button = QPushButton("打开项目")
+        open_project_button = QPushButton("打开")
         open_project_button.setObjectName("OpenProjectButton")
 
         buttons_layout.addWidget(new_project_button)
