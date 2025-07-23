@@ -6,7 +6,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("欢迎访问 CraftEngine-Editor")
-        self.resize(1224, 1000)
+        self.resize(1280, 800)
 
         # 获取脚本所在目录的绝对路径
         current_dir = os.path.dirname(os.path.abspath(__file__))
