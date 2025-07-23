@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
         converter_button = QPushButton()
         converter_button.setIcon(QIcon(converter_button_icon_path))
         converter_button.setIconSize(QSize(24, 24))
-        converter_button.setText("转换器")
+        converter_button.setText("转换")
         converter_button.setObjectName("ConverterButton") # 新增标识符
 
         left_menu_layout.addWidget(logo_label)
