@@ -6,7 +6,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("欢迎访问 CraftEngine-Editor")
-        self.resize(1280, 800)
+        self.resize(1920, 1200)
 
         # 获取脚本所在目录的绝对路径
         current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -43,19 +43,31 @@ class MainWindow(QMainWindow):
         projects_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'suitcase-solid-full.svg')
         converter_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'gears-solid-full.svg') # 新增图标路径
 
-        # Logo + 程序名 + 版本号
+        # 左侧图标 + 右侧程序信息
+        header_widget = QWidget()
+        header_layout = QHBoxLayout(header_widget)
+
+        # Logo
         logo_label = QLabel()
         logo_label.setPixmap(QPixmap(logo_path).scaled(48, 48, Qt.KeepAspectRatio))
         logo_label.setAlignment(Qt.AlignCenter)
 
+        # 程序信息（垂直布局）
+        info_layout = QVBoxLayout()
         program_name = QLabel("CraftEngine-Editor")
         program_name.setFont(QFont("Arial", 14, QFont.Bold))
-        program_name.setAlignment(Qt.AlignCenter)
+        program_name.setObjectName("ProgramName")
 
         version_label = QLabel("v0.0.1")
         version_label.setFont(QFont("Arial", 10))
         version_label.setAlignment(Qt.AlignCenter)
         version_label.setObjectName("VersionLabel")
+
+        info_layout.addWidget(program_name)
+        info_layout.addWidget(version_label)
+
+        header_layout.addWidget(logo_label)
+        header_layout.addLayout(info_layout)
 
         # 项目按钮
         projects_button = QPushButton()
@@ -71,9 +83,7 @@ class MainWindow(QMainWindow):
         converter_button.setText("转换")
         converter_button.setObjectName("ConverterButton") # 新增标识符
 
-        left_menu_layout.addWidget(logo_label)
-        left_menu_layout.addWidget(program_name)
-        left_menu_layout.addWidget(version_label)
+        left_menu_layout.addWidget(header_widget)
         left_menu_layout.addWidget(projects_button)
         left_menu_layout.addWidget(converter_button) # 新增按钮
         left_menu_layout.addStretch()
@@ -85,11 +95,11 @@ class MainWindow(QMainWindow):
         right_content.setObjectName("RightContent")
         right_content_layout = QVBoxLayout(right_content)
 
-        # 搜索框功能和操作栏
+        # 搜索栏功能和操作栏
         control_bar = QWidget()
         control_bar_layout = QHBoxLayout(control_bar)
 
-        # 搜索
+        # 搜索图标
         search_bar = QWidget()
         search_layout = QHBoxLayout(search_bar)
 
