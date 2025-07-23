@@ -76,16 +76,16 @@ class MainWindow(QMainWindow):
         projects_button.setText("项目")
         projects_button.setObjectName("ProjectsButton")
 
-        # 转换器按钮（新增）
+        # 转换按钮
         converter_button = QPushButton()
         converter_button.setIcon(QIcon(converter_button_icon_path))
         converter_button.setIconSize(QSize(24, 24))
         converter_button.setText("转换")
-        converter_button.setObjectName("ConverterButton") # 新增标识符
+        converter_button.setObjectName("ConverterButton")
 
         left_menu_layout.addWidget(header_widget)
         left_menu_layout.addWidget(projects_button)
-        left_menu_layout.addWidget(converter_button) # 新增按钮
+        left_menu_layout.addWidget(converter_button)
         left_menu_layout.addStretch()
 
         main_layout.addWidget(left_menu, 1)
