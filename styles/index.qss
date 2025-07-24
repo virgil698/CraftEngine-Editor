@@ -24,7 +24,7 @@ QWidget {
 }
 
 /* 左侧菜单按钮 */
-#ProjectsButton, #ConverterButton {
+#ProjectsButton, #ConverterButton, #SettingsButton {
     text-align: left;
     padding: 12px; /* 增加内边距 */
     margin: 10px 0;
@@ -32,7 +32,7 @@ QWidget {
     border: none;
 }
 
-#ProjectsButton:hover, #ConverterButton:hover {
+#ProjectsButton:hover, #ConverterButton:hover, #SettingsButton:hover {
     background-color: #e6f7ff;
 }
 
@@ -76,7 +76,7 @@ QWidget {
 #ProjectsList::item {
     padding: 12px; /* 增加内边距 */
     border-bottom: 1px solid #eeeeee;
-    font-size: 20px; /* 增大列表项字体 */
+    font-size: 16px; /* 增大列表项字体 */
 }
 
 #ProjectsList::item:hover {

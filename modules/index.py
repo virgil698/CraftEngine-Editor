@@ -48,6 +48,7 @@ class MainWindow(QMainWindow):
         logo_path = os.path.join(current_dir, '..', 'resources', 'logo.ico')
         projects_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'suitcase-solid-full.svg')
         converter_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'gears-solid-full.svg') # 新增图标路径
+        settings_button_icon_path = os.path.join(current_dir, '..', 'resources', 'svg', 'gear-solid-full.svg') # 新增设置按钮图标路径
 
         # 左侧图标 + 右侧程序信息
         header_widget = QWidget()
@@ -89,9 +90,17 @@ class MainWindow(QMainWindow):
         converter_button.setText("转换")
         converter_button.setObjectName("ConverterButton")
 
+        # 设置按钮
+        settings_button = QPushButton() # 新增设置按钮
+        settings_button.setIcon(QIcon(settings_button_icon_path))
+        settings_button.setIconSize(QSize(24, 24))
+        settings_button.setText("设置") # 设置按钮文本
+        settings_button.setObjectName("SettingsButton") # 设置按钮对象名称
+
         left_menu_layout.addWidget(header_widget)
         left_menu_layout.addWidget(projects_button)
         left_menu_layout.addWidget(converter_button)
+        left_menu_layout.addWidget(settings_button) # 添加设置按钮到布局
         left_menu_layout.addStretch()
 
         main_layout.addWidget(left_menu, 1)
