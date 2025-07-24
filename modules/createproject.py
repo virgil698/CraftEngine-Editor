@@ -1,5 +1,4 @@
 import os
-
 from PyQt5.Qt import *
 
 class CreateProject(QMainWindow):
@@ -60,6 +59,17 @@ class CreateProject(QMainWindow):
         form_layout.addWidget(description_label, 3, 0)
         form_layout.addWidget(self.description_edit, 3, 1)
 
+        # 第五行：项目是否启用
+        enabled_label = QLabel("项目是否启用")
+        enabled_label.setObjectName("formLabel")
+        self.enabled_combo = QComboBox()
+        self.enabled_combo.setObjectName("formInput")
+        self.enabled_combo.addItem("启用 / true", True)
+        self.enabled_combo.addItem("禁用 / false", False)
+        self.enabled_combo.currentIndexChanged.connect(self.update_combo_style)
+        form_layout.addWidget(enabled_label, 4, 0)
+        form_layout.addWidget(self.enabled_combo, 4, 1)
+
         # 添加表单布局到主布局
         main_layout.addLayout(form_layout)
 
@@ -83,18 +93,53 @@ class CreateProject(QMainWindow):
         self.create_button.clicked.connect(self.create_project)
         self.cancel_button.clicked.connect(self.close)
 
+        # 初始化选择器样式
+        self.update_combo_style()
+
+    def update_combo_style(self):
+        # 根据选择状态更新样式
+        current_index = self.enabled_combo.currentIndex()
+        if current_index == 0:  # 启用
+            self.enabled_combo.setStyleSheet('''
+                #formInput {
+                    border: 1px solid #4CAF50;
+                    background-color: #E8F5E9;
+                }
+                #formInput::drop-down {
+                    subcontrol-origin: padding;
+                    subcontrol-position: top right;
+                    width: 15px;
+                    border-left: 1px solid #4CAF50;
+                }
+            ''')
+        elif current_index == 1:  # 禁用
+            self.enabled_combo.setStyleSheet('''
+                #formInput {
+                    border: 1px solid #F44336;
+                    background-color: #FFEBEE;
+                }
+                #formInput::drop-down {
+                    subcontrol-origin: padding;
+                    subcontrol-position: top right;
+                    width: 15px;
+                    border-left: 1px solid #F44336;
+                }
+            ''')
+
     def create_project(self):
         # 获取表单数据
         project_name = self.name_edit.text()
         project_author = self.author_edit.text()
         project_version = self.version_edit.text()
         project_description = self.description_edit.toPlainText()
+        project_enabled = self.enabled_combo.currentData()
 
         # 在这里可以添加项目创建的逻辑
         print(f"创建项目: {project_name}")
         print(f"作者: {project_author}")
         print(f"版本: {project_version}")
         print(f"描述: {project_description}")
+        print(f"启用状态: {project_enabled}")
 
         # 关闭窗口
         self.close()
