@@ -1,12 +1,54 @@
-/*
- * setting - Qt Style Sheet
- * Created: 2025/7/23
- */
-
-/* Base styling */
-QWidget {
-    background-color: #f0f0f0;
-    color: #333333;
+/* 设置窗口样式 */
+SettingWidget {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
 }
 
-/* Add your QSS styles here */
+/* 标签样式 */
+QLabel {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+/* 下拉框样式 */
+QComboBox {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 20px;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 按钮样式 */
+QPushButton {
+    background-color: #3a7bc8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+QPushButton:hover {
+    background-color: #3a7bc8;
+}
+
+/* 水平布局中的部件间距 */
+QHBoxLayout {
+    spacing: 15px;
+    margin: 10px 0;
+}
+
+/* 垂直布局中的部件间距 */
+QVBoxLayout {
+    spacing: 20px;
+}
