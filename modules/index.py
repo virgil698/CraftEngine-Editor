@@ -2,6 +2,9 @@ import os
 
 from PyQt5.Qt import *
 
+from .createproject import CreateProject  # 导入项目创建窗口类
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -32,6 +35,9 @@ class MainWindow(QMainWindow):
         with open(style_path, 'r', encoding='utf-8') as f:
             style = f.read()
             self.setStyleSheet(style)
+
+        # 创建项目窗口的引用
+        self.create_project_window = None
 
     def setup_left_menu(self, main_layout, current_dir):
         left_menu = QWidget()
@@ -95,11 +101,11 @@ class MainWindow(QMainWindow):
         right_content.setObjectName("RightContent")
         right_content_layout = QVBoxLayout(right_content)
 
-        # 搜索栏功能和操作栏
+        # 搜索功能和操作栏
         control_bar = QWidget()
         control_bar_layout = QHBoxLayout(control_bar)
 
-        # 搜索图标
+        # 搜索框
         search_bar = QWidget()
         search_layout = QHBoxLayout(search_bar)
 
@@ -110,7 +116,7 @@ class MainWindow(QMainWindow):
         search_icon.setPixmap(QPixmap(search_icon_path).scaled(24, 24, Qt.KeepAspectRatio))
 
         search_edit = QLineEdit()
-        search_edit.setPlaceholderText("搜索项目...")
+        search_edit.setPlaceholderText("搜索...")
         search_edit.setObjectName("SearchEdit")
 
         search_layout.addWidget(search_icon)
@@ -122,6 +128,7 @@ class MainWindow(QMainWindow):
 
         new_project_button = QPushButton("新建项目")
         new_project_button.setObjectName("NewProjectButton")
+        new_project_button.clicked.connect(self.open_create_project_window)  # 连接到打开项目创建窗口的槽函数
 
         open_project_button = QPushButton("打开")
         open_project_button.setObjectName("OpenProjectButton")
@@ -146,3 +153,12 @@ class MainWindow(QMainWindow):
         right_content_layout.addWidget(projects_list)
 
         main_layout.addWidget(right_content, 3)
+
+    def open_create_project_window(self):
+        """
+        打开创建项目窗口
+        """
+        if not self.create_project_window or not self.create_project_window.isVisible():  # 如果窗口不存在或者不可见，则创建并显示
+            self.create_project_window = CreateProject()
+            self.create_project_window.resize(1024, 600)
+        self.create_project_window.show()

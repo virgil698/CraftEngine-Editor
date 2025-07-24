@@ -23,15 +23,16 @@ QWidget {
     margin-left: 10px;
 }
 
-#ProjectsButton, #ConverterButton { /* 同时定义项目按钮和转换器按钮的样式 */
+/* 左侧菜单按钮 */
+#ProjectsButton, #ConverterButton {
     text-align: left;
-    padding: 10px;
+    padding: 12px; /* 增加内边距 */
     margin: 10px 0;
-    font-size: 14px;
+    font-size: 20px; /* 增大字体到16px */
     border: none;
 }
 
-#ProjectsButton:hover, #ConverterButton:hover { /* 同时定义悬停效果 */
+#ProjectsButton:hover, #ConverterButton:hover {
     background-color: #e6f7ff;
 }
 
@@ -40,23 +41,23 @@ QWidget {
     background-color: #ffffff;
 }
 
-/* 搜索按钮 */
+/* 搜索栏 */
 #SearchEdit {
     border: 1px solid #cccccc;
     border-radius: 4px;
     padding: 8px;
-    font-size: 14px;
+    font-size: 20px; /* 增大搜索框字体 */
     min-width: 200px;
 }
 
-/* 操作按钮 */
+/* 右侧操作按钮（增大字体） */
 #NewProjectButton, #OpenProjectButton {
     background-color: #4a90e2;
     color: white;
     border: none;
     border-radius: 4px;
-    padding: 8px 15px;
-    font-size: 14px;
+    padding: 10px 16px; /* 增加内边距 */
+    font-size: 20px; /* 增大字体到16px */
     margin-left: 10px;
 }
 
@@ -73,8 +74,9 @@ QWidget {
 }
 
 #ProjectsList::item {
-    padding: 10px;
+    padding: 12px; /* 增加内边距 */
     border-bottom: 1px solid #eeeeee;
+    font-size: 20px; /* 增大列表项字体 */
 }
 
 #ProjectsList::item:hover {

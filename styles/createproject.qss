@@ -1,12 +1,51 @@
-/*
- * createproject - Qt Style Sheet
- * Created: 2025/7/23
- */
-
-/* Base styling */
+/* createproject.qss */
 QWidget {
     background-color: #f0f0f0;
-    color: #333333;
+    font-family: "Microsoft YaHei", sans-serif;
 }
 
-/* Add your QSS styles here */
+#formLabel {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    padding: 8px;
+    min-width: 100px;
+}
+
+#formInput {
+    font-size: 20px;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+#formInput:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+#createButton {
+    background-color: #4a90e2;
+    color: white;
+    font-size: 20px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+#createButton:hover {
+    background-color: #3a7bc8;
+}
+
+#cancelButton {
+    background-color: #cccccc;
+    color: #333333;
+    font-size: 20px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+#cancelButton:hover {
+    background-color: #bbbbbb;
+}
